@@ -4,11 +4,17 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --transpile-only --no-notify --ignore-watch node_modules src/server.ts"
+    "dev": "ts-node-dev --transpile-only --no-notify --ignore-watch node_modules src/server.ts",
+    "knex:migrate": "knex --knexfile src/knexfile.ts migrate:latest",
+    "knex:seed": "knex --knexfile src/knexfile.ts seed:run",
+    "knex:rollback": "knex --knexfile src/knexfile.ts migrate:rollback"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "knex": "^0.21.5",
+    "pg": "^8.3.3",
+    "uuid": "^8.3.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.8",

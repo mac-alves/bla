@@ -1,12 +1,19 @@
 import dotenv from 'dotenv';
 dotenv.config()
 
-import express from 'express';
+import express, { Response, Request } from 'express';
+import { v4 as uuidv4 } from 'uuid';
+import knex from './database/connection';
 
 const app = express();
 
-app.get('/', (req, resp)=> {
-    return resp.json(['nada']);
+app.get('/', async (request: Request, response: Response)=> {
+    // console.log(uuidv4());
+    const users = await knex('users').select('*');
+
+    return response.status(200).json({
+        users
+    });
 })
 
 app.listen(process.env.PORT, () => {
