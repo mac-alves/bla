@@ -3,9 +3,12 @@ dotenv.config()
 
 import express from 'express';
 import routes from './routes';
-import { v4 as uuidv4 } from 'uuid';
+import path from 'path';
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, '..', 'docs', 'demo')));
+app.set('views', path.join(__dirname, '..', 'docs', 'demo'));
 app.use(express.json());
 app.use(routes);
 
