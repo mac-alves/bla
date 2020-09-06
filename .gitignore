@@ -125,3 +125,5 @@ package-lock.json
 *.jpeg
 *.jpg
 *.png
+
+.pgdata
